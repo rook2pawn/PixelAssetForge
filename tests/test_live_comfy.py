@@ -22,6 +22,8 @@ def test_live_comfy_registers_assetforge_nodes() -> None:
     expected_nodes = {
         "AssetForgeFixedPaletteQuantize",
         "AssetForgeStrayPixelCleaner",
+        "AssetForgeTightCrop",
+        "AssetForgeGridOverlay",
         "AssetForgeMaskFromHexColor",
         "AssetForgeFilterBlankImages",
     }
