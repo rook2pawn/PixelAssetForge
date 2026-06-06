@@ -25,6 +25,7 @@ def test_live_comfy_registers_pixel_assetforge_nodes() -> None:
         "PixelAssetForgeTightCrop",
         "PixelAssetForgeGridOverlay",
         "PixelAssetForgeMajorityRulesGrid",
+        "PixelAssetForgePaletteReportFromImage",
         "PixelAssetForgeMaskFromHexColor",
         "PixelAssetForgeFilterBlankImages",
     }

@@ -2,7 +2,7 @@
 
 Deterministic pixel-art and sprite utility nodes for ComfyUI.
 
-This repo currently contains the original blank-image filter plus the first mask utility node.
+This repo contains deterministic nodes for palette control, mask cleanup, grid-based pixel workflows, and palette inspection.
 
 The code is organized as a suite:
 
@@ -11,6 +11,7 @@ The code is organized as a suite:
 - `nodes/grid.py`: grid alignment preview tools.
 - `nodes/image_cleanup.py`: small deterministic sprite cleanup operations.
 - `nodes/image_filters.py`: deterministic image filtering and batch hygiene.
+- `nodes/palette_tools.py`: exact palette inspection and reporting tools.
 - `__init__.py`: ComfyUI entrypoint that aggregates node modules.
 
 ## Nodes
@@ -22,6 +23,7 @@ The code is organized as a suite:
 - `Tight Crop`: crops to the smallest rectangle containing pixels whose alpha is above the threshold, with optional integer padding. Fully transparent images are returned unchanged for safety.
 - `Grid Overlay`: draws a non-destructive preview grid over an image so `cell_width`, `cell_height`, `offset_x`, and `offset_y` can be visually aligned before using grid-based transforms.
 - `Majority Rules Grid`: divides an already palette-constrained image into grid cells, chooses the dominant exact color or alpha in each cell, and fills the whole cell with that result.
+- `Palette Report From Image`: extracts exact visible colors from an image, emits reusable palette text, a count/frequency report, a color count, and a swatch preview.
 
 ## Install
 
