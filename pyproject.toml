@@ -10,8 +10,17 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
 [project.urls]
 Repository = "https://github.com/YOUR_NAME/ComfyUI-AssetForge"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "live_comfy: requires a running ComfyUI server on http://127.0.0.1:8188",
+]
 
 [tool.comfy]
 PublisherId = ""
