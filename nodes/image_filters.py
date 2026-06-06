@@ -14,7 +14,7 @@ class FilterBlankImages:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("images",)
     FUNCTION = "filter_images"
-    CATEGORY = "AssetForge/Image Filters"
+    CATEGORY = "PixelAssetForge/Image Filters"
 
     def filter_images(self, images: torch.Tensor, tolerance: float) -> tuple[torch.Tensor]:
         pixel_range = images.amax(dim=(1, 2)) - images.amin(dim=(1, 2))
@@ -24,9 +24,9 @@ class FilterBlankImages:
 
 
 NODE_CLASS_MAPPINGS = {
-    "AssetForgeFilterBlankImages": FilterBlankImages,
+    "PixelAssetForgeFilterBlankImages": FilterBlankImages,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AssetForgeFilterBlankImages": "Filter Blank Images",
+    "PixelAssetForgeFilterBlankImages": "Filter Blank Images",
 }

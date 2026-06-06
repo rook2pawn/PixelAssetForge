@@ -3,9 +3,9 @@ requires = ["setuptools>=70.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "comfyui-assetforge"
+name = "comfyui-pixel-assetforge"
 version = "0.1.0"
-description = "Deterministic utility nodes for ComfyUI asset workflows."
+description = "Deterministic pixel-art and sprite utility nodes for ComfyUI."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
@@ -14,7 +14,7 @@ dependencies = []
 test = ["pytest>=8.0"]
 
 [project.urls]
-Repository = "https://github.com/YOUR_NAME/ComfyUI-AssetForge"
+Repository = "https://github.com/rook2pawn/PixelAssetForge"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -23,10 +23,10 @@ markers = [
 ]
 
 [tool.comfy]
-PublisherId = ""
-DisplayName = "ComfyUI AssetForge"
+PublisherId = "rook2pawn"
+DisplayName = "ComfyUI PixelAssetForge"
 Icon = ""
-Tags = ["mask", "image", "asset"]
+Tags = ["pixel-art", "sprite", "palette", "mask", "image"]
 
 [tool.setuptools.package-data]
 "*" = ["*.*"]

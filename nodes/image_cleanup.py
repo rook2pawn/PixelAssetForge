@@ -24,7 +24,7 @@ class StrayPixelCleaner:
     RETURN_TYPES = ("IMAGE", "MASK", "IMAGE")
     RETURN_NAMES = ("image", "mask", "rgba_image")
     FUNCTION = "clean"
-    CATEGORY = "AssetForge/Cleanup"
+    CATEGORY = "PixelAssetForge/Cleanup"
 
     def clean(
         self,
@@ -84,7 +84,7 @@ class TightCrop:
     RETURN_TYPES = ("IMAGE", "MASK", "IMAGE")
     RETURN_NAMES = ("image", "mask", "rgba_image")
     FUNCTION = "crop"
-    CATEGORY = "AssetForge/Cleanup"
+    CATEGORY = "PixelAssetForge/Cleanup"
 
     def crop(
         self,
@@ -167,11 +167,11 @@ def count_opaque_neighbors(opaque: torch.Tensor, kernel: torch.Tensor) -> torch.
 
 
 NODE_CLASS_MAPPINGS = {
-    "AssetForgeStrayPixelCleaner": StrayPixelCleaner,
-    "AssetForgeTightCrop": TightCrop,
+    "PixelAssetForgeStrayPixelCleaner": StrayPixelCleaner,
+    "PixelAssetForgeTightCrop": TightCrop,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AssetForgeStrayPixelCleaner": "Stray Pixel Cleaner",
-    "AssetForgeTightCrop": "Tight Crop",
+    "PixelAssetForgeStrayPixelCleaner": "Stray Pixel Cleaner",
+    "PixelAssetForgeTightCrop": "Tight Crop",
 }

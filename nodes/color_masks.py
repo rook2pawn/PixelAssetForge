@@ -20,7 +20,7 @@ class MaskFromHexColor:
     RETURN_TYPES = ("MASK",)
     RETURN_NAMES = ("mask",)
     FUNCTION = "create_mask"
-    CATEGORY = "AssetForge/Color Masks"
+    CATEGORY = "PixelAssetForge/Color Masks"
 
     def create_mask(self, image: torch.Tensor, hex_color: str, tolerance: float) -> tuple[torch.Tensor]:
         target = self._parse_hex_color(hex_color, image.device, image.dtype)
@@ -45,9 +45,9 @@ class MaskFromHexColor:
 
 
 NODE_CLASS_MAPPINGS = {
-    "AssetForgeMaskFromHexColor": MaskFromHexColor,
+    "PixelAssetForgeMaskFromHexColor": MaskFromHexColor,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AssetForgeMaskFromHexColor": "Mask From Hex Color",
+    "PixelAssetForgeMaskFromHexColor": "Mask From Hex Color",
 }

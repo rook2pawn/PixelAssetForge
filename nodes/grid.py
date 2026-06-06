@@ -30,7 +30,7 @@ class GridOverlay:
     RETURN_TYPES = ("IMAGE", "MASK", "IMAGE")
     RETURN_NAMES = ("image", "mask", "rgba_image")
     FUNCTION = "overlay"
-    CATEGORY = "AssetForge/Grid"
+    CATEGORY = "PixelAssetForge/Grid"
 
     def overlay(
         self,
@@ -98,7 +98,7 @@ class MajorityRulesGrid:
     RETURN_TYPES = ("IMAGE", "MASK", "IMAGE")
     RETURN_NAMES = ("image", "mask", "rgba_image")
     FUNCTION = "canonicalize"
-    CATEGORY = "AssetForge/Grid"
+    CATEGORY = "PixelAssetForge/Grid"
 
     def canonicalize(
         self,
@@ -228,11 +228,11 @@ def parse_hex_color(hex_color: str, device: torch.device, dtype: torch.dtype) ->
 
 
 NODE_CLASS_MAPPINGS = {
-    "AssetForgeGridOverlay": GridOverlay,
-    "AssetForgeMajorityRulesGrid": MajorityRulesGrid,
+    "PixelAssetForgeGridOverlay": GridOverlay,
+    "PixelAssetForgeMajorityRulesGrid": MajorityRulesGrid,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AssetForgeGridOverlay": "Grid Overlay",
-    "AssetForgeMajorityRulesGrid": "Majority Rules Grid",
+    "PixelAssetForgeGridOverlay": "Grid Overlay",
+    "PixelAssetForgeMajorityRulesGrid": "Majority Rules Grid",
 }

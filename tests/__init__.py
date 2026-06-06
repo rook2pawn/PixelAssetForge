@@ -1,1 +1,1 @@
-"""AssetForge test package."""
+"""PixelAssetForge test package."""

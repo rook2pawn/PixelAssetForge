@@ -9,7 +9,7 @@ import pytest
 
 
 @pytest.mark.live_comfy
-def test_live_comfy_registers_assetforge_nodes() -> None:
+def test_live_comfy_registers_pixel_assetforge_nodes() -> None:
     if os.environ.get("ASSETFORGE_LIVE_COMFY") != "1":
         pytest.skip("Set ASSETFORGE_LIVE_COMFY=1 to check the running ComfyUI server.")
 
@@ -20,13 +20,13 @@ def test_live_comfy_registers_assetforge_nodes() -> None:
         pytest.skip(f"ComfyUI API is unavailable: {error}")
 
     expected_nodes = {
-        "AssetForgeFixedPaletteQuantize",
-        "AssetForgeStrayPixelCleaner",
-        "AssetForgeTightCrop",
-        "AssetForgeGridOverlay",
-        "AssetForgeMajorityRulesGrid",
-        "AssetForgeMaskFromHexColor",
-        "AssetForgeFilterBlankImages",
+        "PixelAssetForgeFixedPaletteQuantize",
+        "PixelAssetForgeStrayPixelCleaner",
+        "PixelAssetForgeTightCrop",
+        "PixelAssetForgeGridOverlay",
+        "PixelAssetForgeMajorityRulesGrid",
+        "PixelAssetForgeMaskFromHexColor",
+        "PixelAssetForgeFilterBlankImages",
     }
     missing_nodes = expected_nodes - set(object_info)
     assert not missing_nodes, f"Missing live Comfy nodes: {sorted(missing_nodes)}"

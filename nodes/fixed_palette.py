@@ -43,7 +43,7 @@ class FixedPaletteQuantize:
     RETURN_TYPES = ("IMAGE", "MASK", "IMAGE", "IMAGE")
     RETURN_NAMES = ("image", "mask", "palette_preview", "rgba_image")
     FUNCTION = "quantize"
-    CATEGORY = "AssetForge/Palette"
+    CATEGORY = "PixelAssetForge/Palette"
 
     def quantize(
         self,
@@ -268,9 +268,9 @@ def build_palette_preview(palette: torch.Tensor) -> torch.Tensor:
 
 
 NODE_CLASS_MAPPINGS = {
-    "AssetForgeFixedPaletteQuantize": FixedPaletteQuantize,
+    "PixelAssetForgeFixedPaletteQuantize": FixedPaletteQuantize,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AssetForgeFixedPaletteQuantize": "Fixed Palette Quantize",
+    "PixelAssetForgeFixedPaletteQuantize": "Fixed Palette Quantize",
 }

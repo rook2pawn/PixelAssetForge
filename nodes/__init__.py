@@ -1,1 +1,1 @@
-"""AssetForge node modules."""
+"""PixelAssetForge node modules."""

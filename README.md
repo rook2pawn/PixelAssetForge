@@ -1,6 +1,6 @@
-# ComfyUI AssetForge
+# ComfyUI PixelAssetForge
 
-Deterministic utility nodes for ComfyUI asset workflows.
+Deterministic pixel-art and sprite utility nodes for ComfyUI.
 
 This repo currently contains the original blank-image filter plus the first mask utility node.
 
@@ -25,7 +25,7 @@ The code is organized as a suite:
 
 ## Install
 
-Place this repo in `ComfyUI/custom_nodes/` and restart ComfyUI.
+Place this repo in `ComfyUI/custom_nodes/PixelAssetForge/` and restart ComfyUI.
 
 ## Notes
 
