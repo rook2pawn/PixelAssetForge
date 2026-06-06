@@ -2,6 +2,7 @@ import torch
 import torch.nn.functional as F
 
 from .fixed_palette import get_source_alpha
+from .color_masks import MaskFromHexColor
 
 
 class StrayPixelCleaner:
@@ -126,6 +127,55 @@ class TightCrop:
         return (output_image, comfy_mask, rgba_image)
 
 
+class ColorToAlpha:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "image": ("IMAGE",),
+                "target_color": ("STRING", {"default": "#000000"}),
+                "tolerance": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 255.0, "step": 1.0}),
+                "alpha_threshold": ("FLOAT", {"default": 0.01, "min": 0.0, "max": 1.0, "step": 0.01}),
+                "output_alpha_mode": (["binary", "keep"], {"default": "binary"}),
+            },
+            "optional": {
+                "mask": ("MASK",),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE", "MASK", "IMAGE")
+    RETURN_NAMES = ("image", "mask", "rgba_image")
+    FUNCTION = "convert"
+    CATEGORY = "PixelAssetForge/Cleanup"
+
+    def convert(
+        self,
+        image: torch.Tensor,
+        target_color: str,
+        tolerance: float,
+        alpha_threshold: float,
+        output_alpha_mode: str,
+        mask: torch.Tensor | None = None,
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        rgb = image[..., :3].clamp(0.0, 1.0)
+        source_alpha = get_source_alpha(image, mask)
+        target = MaskFromHexColor._parse_hex_color(target_color, image.device, image.dtype)
+        color_match = torch.abs(rgb - target).amax(dim=-1) <= tolerance / 255.0
+        source_visible = source_alpha >= alpha_threshold
+        output_visible = source_visible & ~color_match
+
+        if output_alpha_mode == "keep":
+            alpha = torch.where(output_visible, source_alpha, torch.zeros_like(source_alpha))
+        else:
+            alpha = output_visible.to(image.dtype)
+
+        output_rgb = torch.where(output_visible.unsqueeze(-1), rgb, torch.zeros_like(rgb))
+        output_image = append_alpha_if_needed(output_rgb, alpha, image.shape[-1])
+        rgba_image = torch.cat((output_rgb, alpha.unsqueeze(-1)), dim=-1)
+        comfy_mask = (1.0 - alpha).clamp(0.0, 1.0)
+        return (output_image, comfy_mask, rgba_image)
+
+
 def build_output_alpha(
     source_alpha: torch.Tensor,
     visible: torch.Tensor,
@@ -169,9 +219,11 @@ def count_opaque_neighbors(opaque: torch.Tensor, kernel: torch.Tensor) -> torch.
 NODE_CLASS_MAPPINGS = {
     "PixelAssetForgeStrayPixelCleaner": StrayPixelCleaner,
     "PixelAssetForgeTightCrop": TightCrop,
+    "PixelAssetForgeColorToAlpha": ColorToAlpha,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PixelAssetForgeStrayPixelCleaner": "Stray Pixel Cleaner",
     "PixelAssetForgeTightCrop": "Tight Crop",
+    "PixelAssetForgeColorToAlpha": "Color To Alpha",
 }
