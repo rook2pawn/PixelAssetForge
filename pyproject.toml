@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=70.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-assetforge"
+version = "0.1.0"
+description = "Deterministic utility nodes for ComfyUI asset workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/YOUR_NAME/ComfyUI-AssetForge"
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI AssetForge"
+Icon = ""
+Tags = ["mask", "image", "asset"]
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]

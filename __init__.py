@@ -1,0 +1,27 @@
+from .nodes.color_masks import (
+    NODE_CLASS_MAPPINGS as _color_mask_classes,
+    NODE_DISPLAY_NAME_MAPPINGS as _color_mask_names,
+)
+from .nodes.image_filters import (
+    NODE_CLASS_MAPPINGS as _image_filter_classes,
+    NODE_DISPLAY_NAME_MAPPINGS as _image_filter_names,
+)
+from .nodes.fixed_palette import (
+    NODE_CLASS_MAPPINGS as _fixed_palette_classes,
+    NODE_DISPLAY_NAME_MAPPINGS as _fixed_palette_names,
+)
+
+
+NODE_CLASS_MAPPINGS = {
+    **_color_mask_classes,
+    **_image_filter_classes,
+    **_fixed_palette_classes,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    **_color_mask_names,
+    **_image_filter_names,
+    **_fixed_palette_names,
+}
+
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
